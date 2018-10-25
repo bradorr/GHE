@@ -6,6 +6,11 @@ vpc_cidr = {
   default = "10.0.0.0/16"
 }
 
+permitted_ip = {
+  description = "Office ip address used in security groups"
+  default = "185.73.154.30/32"
+}
+
 subnet_cidr = { 
   default = "10.0.1.0/24"
 }
@@ -28,4 +33,8 @@ ghe_ami = {
 
 ghe_type = {
   deafult = "m3.xlarge"
+}
+
+permited_ip = {
+  deafult = "185.73.154.30/32"
 }
