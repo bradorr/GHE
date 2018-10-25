@@ -18,5 +18,6 @@ resource "aws_subnet" "main" {
 
 resource "aws_ebs_volume" "ghe" {
     availability_zone = "${var.ebs_az}"
-    type = "${var.ebs.type}"
+    type = "${var.ebs_type}"
+    size = "${var.ebs_size}"
 }

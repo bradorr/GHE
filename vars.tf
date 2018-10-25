@@ -13,3 +13,11 @@ subnet_cidr = {
 ebs_az = {
     deafult = "eu-west-1a"
 }
+
+ebs_type = {
+    default = "gp2"
+}
+
+ebs_size = {
+    default = 100 
+}
