@@ -21,3 +21,11 @@ ebs_type = {
 ebs_size = {
   default = 100 
 }
+
+ghe_ami = {
+  default = "ami-0eb44f5448fee0991"
+}
+
+ghe_type = {
+  deafult = "m3.xlarge"
+}

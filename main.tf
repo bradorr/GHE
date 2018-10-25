@@ -23,6 +23,9 @@ resource "aws_ebs_volume" "ghe" {
 }
 
 resource "aws_instance" "ghe" {
+  ami = "${var.ghe_ami}"
+  instance_type = "${var.ghe_type}"
+  ebs_optimized = true
+  ebs_block_device = "${aws_ebs_volume.ghe.arn}"
 
-  
 }
