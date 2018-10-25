@@ -1,23 +1,23 @@
 aws_region = {
-    default = "eu-west-1"
+  default = "eu-west-1"
 }
 
 vpc_cidr = {
-    default = "10.0.0.0/16"
+  default = "10.0.0.0/16"
 }
 
 subnet_cidr = { 
-    default = "10.0.1.0/24"
+  default = "10.0.1.0/24"
 }
 
 ebs_az = {
-    deafult = "eu-west-1a"
+  deafult = "eu-west-1a"
 }
 
 ebs_type = {
-    default = "gp2"
+  default = "gp2"
 }
 
 ebs_size = {
-    default = 100 
+  default = 100 
 }
