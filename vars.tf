@@ -16,7 +16,7 @@ variable "subnet_cidr" {
 }
 
 variable "ebs_az" {
-  deafult = "eu-west-1a"
+  default = "eu-west-1a"
 }
 
 variable "ebs_type" {
@@ -32,9 +32,9 @@ variable "ghe_ami" {
 }
 
 variable "ghe_type" {
-  deafult = "m3.xlarge"
+  default = "m3.xlarge"
 }
 
 variable "permited_ip" {
-  deafult = "185.73.154.30/32"
+  default = "185.73.154.30/32"
 }
