@@ -1,5 +1,7 @@
 provider "aws" {
   region = "${var.aws_region}"
+  shared_credentials_file = "~/.aws/credentials"
+  profile                 = "cr-labs-deploy"
 }
 
 resource "aws_vpc" "ghe-vpc" {
@@ -10,6 +12,21 @@ resource "aws_internet_gateway" "gw" {
   vpc_id = "${aws_vpc.ghe-vpc.id}"
 }
 
+resource "aws_route_table" "public" {
+  vpc_id = "${aws_vpc.ghe-vpc.id}"
+  route {
+    cidr_block = "${var.anywhere_cidr}"
+    gateway_id = "${aws_internet_gateway.gw.id}"
+  }
+  
+}
+
+resource "aws_route_table_association" "public" {
+  subnet_id = "${aws_subnet.main.id}"
+  route_table_id = "${aws_route_table.public.id}"
+}
+
+
 resource "aws_subnet" "main" {
   vpc_id = "${aws_vpc.ghe-vpc.id}"
   cidr_block = "${var.subnet_cidr}"
@@ -18,11 +35,13 @@ resource "aws_subnet" "main" {
 
 
 resource "aws_instance" "ghe" {
+  security_groups = ["${aws_security_group.ghe.id}"]
+  subnet_id = "${aws_subnet.main.id}"
   ami = "${var.ghe_ami}"
   instance_type = "${var.ghe_type}"
   ebs_optimized = true
   ebs_block_device {
-    device_name = "dev/ghe"
+    device_name = "/dev/sda1"
     volume_type = "${var.ebs_type}"
     volume_size = "${var.ebs_size}"
   }

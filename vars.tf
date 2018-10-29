@@ -15,6 +15,11 @@ variable "subnet_cidr" {
   default = "10.0.1.0/24"
 }
 
+variable "anywhere_cidr" {
+  default = "0.0.0.0/0"
+}
+
+
 variable "ebs_az" {
   default = "eu-west-1a"
 }
@@ -24,7 +29,7 @@ variable "ebs_type" {
 }
 
 variable "ebs_size" {
-  default = 100 
+  default = 300
 }
 
 variable "ghe_ami" {
